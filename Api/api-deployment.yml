@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hygieia-api-deployment
+  labels:
+    app: hygieia-api
+    type: backend
+spec:
+  selector:
+    matchLabels:
+      app: hygieia-api
+  replicas: 1
+  template:
+    metadata:
+      name: hygieia-api-pod
+      labels:
+        app: hygieia-api
+        type: backend
+    spec:
+      containers:
+        - name: hygieia-api
+          image: anayyadav/hygieia-api:1
+          ports:
+          - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: hygieia-config

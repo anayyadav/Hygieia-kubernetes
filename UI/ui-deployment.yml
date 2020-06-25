@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hygieia-ui-deployment
+  labels:
+    app: hygieia-ui
+    type: frontend
+spec:
+  selector:
+    matchLabels:
+      app: hygieia-ui
+  replicas: 1
+  template:
+    metadata:
+      name: hygieia-ui-pod
+      labels:
+        app: hygieia-ui
+        type: frontend
+    spec:
+      containers:
+        - name: hygieia-ui
+          image: anayyadav/hygieia-ui:1
+          ports:
+          - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: hygieia-config
