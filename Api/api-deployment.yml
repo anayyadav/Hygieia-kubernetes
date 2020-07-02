@@ -33,9 +33,8 @@ spec:
               memory: "1024Mi"
               cpu: "500m"
           livenessProbe:
-            httpGet:
-              path: 8080
-              port: /api
+            tcpSocket:
+              port: 8080
             initialDelaySeconds: 10
             periodSeconds: 50
             failureThreshold: 8
