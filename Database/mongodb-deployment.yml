@@ -29,3 +29,15 @@ spec:
             limits:
               memory: "1024Mi"
               cpu: "500m"
+          livenessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 10
+            periodSeconds: 50
+            failureThreshold: 8
+          readinessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 10
+            periodSeconds: 50
+            failureThreshold: 8
