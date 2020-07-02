@@ -38,3 +38,9 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 50
             failureThreshold: 8
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 50
+            failureThreshold: 8
